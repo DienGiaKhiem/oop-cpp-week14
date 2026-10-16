@@ -31,6 +31,14 @@ public:
 
     virtual double calculateSalary(int month, int year) = 0;
 
+    // Lương cả năm = cộng lương 12 tháng (tự gọi đúng hàm của lớp con)
+    double calculateYearlySalary(int year) {
+        double total = 0;
+        for (int m = 1; m <= 12; m++)
+            total += calculateSalary(m, year);
+        return total;
+    }
+
     virtual void display() {
         cout << "CCCD: " << cccd << endl;
         cout << "Phone: " << phone << endl;
@@ -81,7 +89,7 @@ public:
 
     void display() override {
         cout << "--- Hourly Employee ---" << endl;
-        Employee::display();   // gọi hàm của lớp cha
+        Employee::display();
         cout << "Hours: " << hours << endl;
         cout << "Salary per hour: " << salaryPerHour << endl;
         cout << "Month/Year: " << month << "/" << year << endl;
@@ -169,10 +177,6 @@ public:
         return 0;
     }
 
-    double calculateYearlySalary(int year){
-        
-    }
-
     void display() override {
         cout << "--- Daily Employee ---" << endl;
         Employee::display();
@@ -193,6 +197,8 @@ int main() {
         e->display();
         cout << "Salary (10/2026): " << e->calculateSalary(10, 2026) << endl;
         cout << "Salary (11/2026): " << e->calculateSalary(11, 2026) << endl;
+        cout << "Yearly salary (2026): " << e->calculateYearlySalary(2026) << endl;
         cout << endl;
     }
+    return 0;
 }
