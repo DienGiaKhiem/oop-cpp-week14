@@ -178,7 +178,6 @@ int main() {
     for (int i = 0; i < 3; i++)
         foods[i]->display();
 
-    // Nhap ngay can tinh doanh thu
     int d, m, y;
     cout << "Nhap ngay (d m y): ";
     cin >> d >> m >> y;
